@@ -17,6 +17,8 @@ import { UserButton } from "@clerk/nextjs";
 import SearchBox from "@/components/dashboard/searchbox";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import { ThemeToggle } from "@/components/theme-toggle";
+import { Logo } from "@/components/logo";
 
 export default function Dashboard({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -26,8 +28,8 @@ export default function Dashboard({ children }: { children: React.ReactNode }) {
       <div className="hidden border-r bg-muted/40 lg:block">
         <div className="flex h-full max-h-screen flex-col gap-2">
           <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
-            <Link href="/" className="flex items-center gap-2 font-semibold">
-              <Image src="/logo.svg" alt="logo" width={100} height={100} />
+            <Link href="/" className="hover:opacity-90 transition-opacity">
+              <Logo iconSize={28} showText={true} />
             </Link>
           </div>
           <div className="flex-1">
@@ -98,8 +100,8 @@ export default function Dashboard({ children }: { children: React.ReactNode }) {
             </SheetTrigger>
             <SheetContent side="left" className="flex flex-col">
               <nav className="grid gap-2 text-lg font-medium">
-                <Link href="/" className="flex items-center gap-3 mb-4">
-                  <Image src="/logo.svg" alt="logo" width={100} height={100} />
+                <Link href="/" className="mb-4 hover:opacity-90 transition-opacity">
+                  <Logo iconSize={28} showText={true} />
                 </Link>
                 <Link
                   href="/dashboard/spend-analysis"
@@ -154,6 +156,7 @@ export default function Dashboard({ children }: { children: React.ReactNode }) {
           <div className="w-full flex-1">
             <SearchBox />
           </div>
+          <ThemeToggle />
           <UserButton />{" "}
         </header>
         <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">

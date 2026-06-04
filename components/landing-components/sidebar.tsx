@@ -7,9 +7,11 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { DotsHorizontalIcon } from "@radix-ui/react-icons";
-import Image from "next/image";
 import { FC } from "react";
 import { Button } from "../ui/button";
+import { Logo } from "@/components/logo";
+
+import Link from "next/link";
 
 interface SidebarProps {}
 
@@ -25,18 +27,24 @@ const Sidebar: FC<SidebarProps> = ({}) => {
         <SheetContent side={"left"}>
           <SheetHeader>
             <SheetTitle>
-              <Image src="/logo.svg" alt="logo" width={100} height={100} />
+              <Logo iconSize={28} showText={true} />
             </SheetTitle>
-            <nav className="flex flex-col gap-6">
-              <Button variant={"ghost"} size={"lg"} className="px-4">
-                Product
-              </Button>
-              <Button variant={"ghost"} size={"lg"} className="px-4">
-                Solution
-              </Button>
-              <Button variant={"ghost"} size={"lg"} className="px-4">
-                Pricing
-              </Button>
+            <nav className="flex flex-col gap-4 mt-6">
+              <Link href="#features" className="w-full">
+                <Button variant={"ghost"} size={"lg"} className="w-full justify-start font-medium text-base rounded-xl">
+                  Features
+                </Button>
+              </Link>
+              <Link href="#about" className="w-full">
+                <Button variant={"ghost"} size={"lg"} className="w-full justify-start font-medium text-base rounded-xl">
+                  About Us
+                </Button>
+              </Link>
+              <Link href="#cta" className="w-full">
+                <Button variant={"ghost"} size={"lg"} className="w-full justify-start font-medium text-base rounded-xl">
+                  Get Started
+                </Button>
+              </Link>
             </nav>
           </SheetHeader>
         </SheetContent>
